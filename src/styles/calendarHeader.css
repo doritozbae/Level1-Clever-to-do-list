@@ -1,0 +1,32 @@
+.calendarHeader {
+  background: #cadefc;
+  height: 100px;
+  padding: 0px 350px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logOut__font {
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+
+.logOut__font::before {
+  content: "";
+  background-color: black;
+  transition: 0.4s ease-out;
+  width: 0%;
+  height: 2px;
+
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+}
+
+.logOut__font:hover::before {
+  width: 100%;
+}

@@ -1,8 +1,11 @@
-import "./App.css";
+// import "./App.css";
 import React from "react";
 
+// import CalendarContent from "./components/calendarPage/calendarContent";
+import CalendarPage from "./components/calendarPage/calendarPage";
+
 function App() {
-  return <div> hi </div>;
+  return <CalendarPage />;
   // return (
   //   // <div className="App">
   //   //   <header className="App-header">
