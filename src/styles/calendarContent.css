@@ -1,8 +1,8 @@
 .calendarContent {
-  margin: 40px 350px;
-  padding: 20px;
+  margin: 20px 250px;
+  padding: 40px;
   background: #fff;
   height: 76vh;
   border-radius: 5px;
-  box-shadow: -1px 4px 21px -5px rgba(34, 60, 80, 0.08);
+  box-shadow: -1px 4px 21px -5px rgba(34, 60, 80, 0.1);
 }

@@ -1,11 +1,13 @@
 // import "./App.css";
 import React from "react";
+import Login from "./components/AuthPage/Login";
 
-import CalendarPage from "./components/calendarPage/calendarPage";
+// import CalendarPage from "./components/calendarPage/calendarPage";
 // import AddTaskPopup from "./components/calendarPage/Popups/addTask";
 
 function App() {
-  return <CalendarPage />;
+  // return <CalendarPage />;
+  return <Login />;
   // return <AddTaskPopup />;
   // return (
   //   // <div className="App">
