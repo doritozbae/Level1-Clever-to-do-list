@@ -24,8 +24,8 @@ h3 {
   text-align: center;
   /* width: 230px; */
   height: 180px;
-  padding: 30px 30px;
-  margin-right: 10px;
+  padding: 20px 0px;
+  /* margin-right: 10px; */
   border-radius: 5px;
   border: 1px solid #e0e0e0;
   transition: 0.4s;
@@ -49,6 +49,7 @@ h3 {
   margin: 0 2px;
   border-radius: 50%;
   background: #e0e0e0;
+  transition: 0.2ms;
 }
 
 .doneTask {
@@ -57,4 +58,8 @@ h3 {
 
 .none {
   display: none;
+}
+
+.selectedDay {
+  border: 2px solid #a7caff;
 }

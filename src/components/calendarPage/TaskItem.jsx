@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../styles/tasks.css";
 
 function Task() {
+  // const [EditTask, setEditTask] = useState(false);
+
+  const [TaskStatus, setTaskStatus] = useState(false);
+
+  const handleTaskStatus = () => {
+    if (TaskStatus === false) {
+      setTaskStatus(true);
+    } else setTaskStatus(false);
+  };
+
+  const toggleTaskStatus = TaskStatus
+    ? "taskCheckbox doneTask"
+    : "taskCheckbox";
+
+  const toggleTaskStatusFont = TaskStatus ? "doneTask__font" : "";
+
   return (
     <div className="taskContent">
       <div className="taskContent__name">
-        <div className="taskCheckbox doneTask"></div>
-        <p>Name of the task</p>
+        <div onClick={handleTaskStatus} className={toggleTaskStatus}></div>
+        <p className={toggleTaskStatusFont}> Name of the task</p>
       </div>
 
       <div className="taskIcons">

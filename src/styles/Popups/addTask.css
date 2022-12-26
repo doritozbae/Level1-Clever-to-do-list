@@ -1,0 +1,71 @@
+h2 {
+  margin: 0px 0px 25px 0px;
+}
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.addTask__shade {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0%;
+  left: 0%;
+  z-index: 50;
+  background-color: black;
+  opacity: 0.5;
+}
+
+.addTask__popup {
+  position: absolute;
+  display: flex;
+  flex-flow: column;
+  z-index: 100;
+  background: #fff;
+  padding: 0px 20px;
+  height: auto;
+  width: 25vw;
+  padding: 30px;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-style: inherit;
+}
+
+.addTaskName {
+  display: block;
+  width: 95%;
+  height: calc(2.25rem + 2px);
+  padding: 0px 10px;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.25rem;
+  font-size: 16px;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 30px;
+  /* transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; */
+}
+
+.addTaskName__description {
+  resize: none;
+  height: 120px;
+  padding: 5px 10px;
+  font-size: 16px;
+  margin-bottom: 50px;
+  font-family: "Poppins", sans-serif;
+}
+
+.btnsContainer {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-end;
+}
+
+.btnGap {
+  width: 30px;
+}
