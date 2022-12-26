@@ -1,10 +1,10 @@
 import React from "react";
 import Task from "./TaskItem";
+import "../../styles/tasksList.css";
 
 function TasksList() {
   return (
-    <div>
-      <Task />
+    <div className="tasks__container">
       <Task />
       <Task />
     </div>
