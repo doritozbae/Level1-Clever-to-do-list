@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../styles/auth/login.css";
 
-function Login() {
+function Register() {
   return (
     <div className="loginSection">
-      <h1 className="loginSection__font">Login</h1>
+      <h1 className="loginSection__font">Sign Up</h1>
       <div>
         <label>Email</label>
         <input className="loginInput" />
@@ -15,11 +15,11 @@ function Login() {
 
       <div className="text-right">
         &nbsp;&nbsp;&nbsp;
-        <Link to="/register">Sign Up</Link>
+        <Link to="/login">Login</Link>
       </div>
-      <button className="loginSectionButton">Login</button>
+      <button className="loginSectionButton">Sign up</button>
     </div>
   );
 }
 
-export default Login;
+export default Register;

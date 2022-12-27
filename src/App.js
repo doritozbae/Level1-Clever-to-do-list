@@ -1,32 +1,22 @@
-// import "./App.css";
 import React from "react";
+import { Route, Routes } from "react-router-dom";
 import Login from "./components/AuthPage/Login";
-
-// import CalendarPage from "./components/calendarPage/calendarPage";
-// import AddTaskPopup from "./components/calendarPage/Popups/addTask";
+import CalendarPage from "./components/calendarPage/calendarPage";
+import PrivateRoutes from "./routes/privateRoutes";
+import Register from "./components/AuthPage/Register";
 
 function App() {
   // return <CalendarPage />;
-  return <Login />;
-  // return <AddTaskPopup />;
-  // return (
-  //   // <div className="App">
-  //   //   <header className="App-header">
-  //   //     <img src={logo} className="App-logo" alt="logo" />
-  //   //     <p>
-  //   //       Edit <code>src/App.js</code> and save to reload.
-  //   //     </p>
-  //   //     <a
-  //   //       className="App-link"
-  //   //       href="https://reactjs.org"
-  //   //       target="_blank"
-  //   //       rel="noopener noreferrer"
-  //   //     >
-  //   //       Learn React
-  //   //     </a>
-  //   //   </header>
-  //   // </div>
-  // );
+  return (
+    // <Login />
+    <Routes>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/" element={<CalendarPage />} />
+      </Route>
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+    </Routes>
+  );
 }
 
 export default App;
