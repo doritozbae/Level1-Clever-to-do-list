@@ -6,7 +6,6 @@ import PrivateRoutes from "./routes/privateRoutes";
 import Register from "./components/AuthPage/Register";
 
 function App() {
-  // return <CalendarPage />;
   return (
     // <Login />
     <Routes>

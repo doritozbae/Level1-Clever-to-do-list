@@ -1,7 +1,17 @@
 import React from "react";
 import "../../styles/calendarHeader.css";
+import { getAuth, signOut } from "firebase/auth";
 
 function CalendarHeader() {
+  const auth = getAuth();
+  signOut(auth)
+    .then(() => {
+      // Sign-out successful.
+    })
+    .catch((error) => {
+      // An error happened.
+      console.log(error);
+    });
   return (
     <div className="calendarHeader">
       <div className="calendarHeaderName">
@@ -20,7 +30,10 @@ function CalendarHeader() {
         <h2> Event Calendar</h2>
       </div>
 
-      <p className="logOut__font"> LogOut</p>
+      <p className="logOut__font" onClick={signOut}>
+        {" "}
+        LogOut
+      </p>
     </div>
   );
 }
