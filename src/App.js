@@ -4,17 +4,24 @@ import Login from "./components/AuthPage/Login";
 import CalendarPage from "./components/calendarPage/calendarPage";
 import PrivateRoutes from "./routes/privateRoutes";
 import Register from "./components/AuthPage/Register";
+import { AuthContextProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    // <Login />
-    <Routes>
-      <Route element={<PrivateRoutes />}>
-        <Route path="/" element={<CalendarPage />} />
-      </Route>
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Register />} />
-    </Routes>
+    <AuthContextProvider>
+      <Routes>
+        <Route
+          path="calendar"
+          element={
+            <PrivateRoutes>
+              <CalendarPage />
+            </PrivateRoutes>
+          }
+        />
+        <Route path="/" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
+    </AuthContextProvider>
   );
 }
 

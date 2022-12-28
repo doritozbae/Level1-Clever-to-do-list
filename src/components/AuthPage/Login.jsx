@@ -1,26 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth/login.css";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import app from "../../database/firebase";
+import { UserAuth } from "../../context/AuthContext";
 
 function Login() {
-  const auth = getAuth(app);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const { signIn } = UserAuth();
 
-  const signIn = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        alert(user);
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        alert(errorMessage);
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await signIn(email, password);
+      navigate("calendar");
+    } catch (e) {
+      setError(e.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -45,7 +44,7 @@ function Login() {
         &nbsp;&nbsp;&nbsp;
         <Link to="/register">Sign Up</Link>
       </div>
-      <button className="loginSectionButton" onClick={signIn}>
+      <button className="loginSectionButton" onClick={handleSubmit}>
         Login
       </button>
     </div>

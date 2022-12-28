@@ -21,12 +21,21 @@
   margin-right: 3px;
 }
 
+.calendarHeaderOptions {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  color: #77acfc;
+  font-size: 20px;
+}
+
 .logOut__font {
   cursor: pointer;
   text-decoration: none;
   position: relative;
   color: #77acfc;
   font-size: 20px;
+  margin-left: 20px;
 }
 
 .logOut__font::before {

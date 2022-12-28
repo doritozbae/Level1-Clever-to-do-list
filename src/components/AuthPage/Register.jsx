@@ -1,29 +1,25 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/auth/login.css";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import app from "../../database/firebase";
+import { UserAuth } from "../../context/AuthContext";
 
 function Register() {
-  const auth = getAuth(app);
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { createUser } = UserAuth();
+  const navigate = useNavigate();
 
-  const signUp = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        alert("yra yra");
-      })
-      .catch((error) => {
-        //   const errorCode = error.code;
-        const errorMessage = error.message;
-        alert(errorMessage);
-        // ..
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await createUser(email, password);
+      navigate("/");
+    } catch (e) {
+      setError(e.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -48,7 +44,7 @@ function Register() {
         &nbsp;&nbsp;&nbsp;
         <Link to="/login">Login</Link>
       </div>
-      <button className="loginSectionButton" onClick={signUp}>
+      <button className="loginSectionButton" onClick={handleSubmit}>
         Sign up
       </button>
     </div>

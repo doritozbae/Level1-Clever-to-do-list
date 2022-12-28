@@ -1,17 +1,21 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 import "../../styles/calendarHeader.css";
-import { getAuth, signOut } from "firebase/auth";
 
 function CalendarHeader() {
-  const auth = getAuth();
-  signOut(auth)
-    .then(() => {
-      // Sign-out successful.
-    })
-    .catch((error) => {
-      // An error happened.
-      console.log(error);
-    });
+  const { user, logout } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate("/");
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+
   return (
     <div className="calendarHeader">
       <div className="calendarHeaderName">
@@ -30,10 +34,12 @@ function CalendarHeader() {
         <h2> Event Calendar</h2>
       </div>
 
-      <p className="logOut__font" onClick={signOut}>
-        {" "}
-        LogOut
-      </p>
+      <div className="calendarHeaderOptions">
+        <p>Welcome, {user && user.email}</p>
+        <p className="logOut__font" onClick={handleLogout}>
+          LogOut
+        </p>
+      </div>
     </div>
   );
 }
