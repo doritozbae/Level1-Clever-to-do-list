@@ -6,6 +6,8 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "../database/firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../store/userReducer";
 
 const UserContext = createContext();
 
@@ -23,6 +25,10 @@ export const AuthContextProvider = ({ children }) => {
   const logout = () => {
     return signOut(auth);
   };
+
+  // const saveData = (uid) => {
+  //   sessionStorage.setItem("userId", uid);
+  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -42,4 +48,15 @@ export const AuthContextProvider = ({ children }) => {
 
 export const UserAuth = () => {
   return useContext(UserContext);
+};
+
+export const useAuth = () => {
+  const { email, token, id } = useSelector(selectUser);
+
+  return {
+    isAuth: !!token,
+    email,
+    token,
+    id,
+  };
 };

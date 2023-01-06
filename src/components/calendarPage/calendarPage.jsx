@@ -1,13 +1,17 @@
 import React from "react";
-// import Calendar from "./calendar";
-import CalendarHeader from "./calendarHeader";
-import CalendarContent from "./calendarContent";
+import CalendarHeader from "./CalendarHeader";
+import Calendar from "./Calendar";
+import "../../styles/calendarContent.css";
+import TaskContainer from "./TaskContainer";
 
 function CalendarPage() {
   return (
     <div>
       <CalendarHeader />
-      <CalendarContent />
+      <div className="calendarContent">
+        <Calendar />
+        <TaskContainer />
+      </div>
     </div>
   );
 }

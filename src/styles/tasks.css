@@ -1,21 +1,18 @@
 .taskContent {
   display: flex;
+  flex-flow: column;
+  position: relative;
+  background: white;
+  border-radius: 15px;
+  padding: 18px 25px;
+  margin-bottom: 18px;
+}
+
+.taskContent_main {
+  display: flex;
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
-  position: relative;
-}
-
-.taskContent::after {
-  content: "";
-  position: absolute;
-  background-color: #e0e0e0;
-  transition: 0.4s ease-out;
-  width: 100%;
-  height: 1px;
-
-  left: 0;
-  bottom: 1px;
 }
 
 .taskIcons,
@@ -30,8 +27,9 @@
   margin-left: 15px;
 }
 
-.taskContent p {
+.taskContent_main p {
   font-size: 22px;
+  margin: 0px;
 }
 
 .taskCheckbox {
@@ -49,4 +47,14 @@
 
 .doneTask__font {
   text-decoration: line-through;
+}
+
+.descriptionSection {
+  font-size: 16px;
+  margin: 0px;
+  padding: 15px 15px 0 35px;
+}
+
+.hide {
+  display: none;
 }

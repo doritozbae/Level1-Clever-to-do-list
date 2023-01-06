@@ -1,4 +1,8 @@
 .tasks__container {
   overflow: auto;
-  height: 39vh;
+  height: 40vh;
+}
+
+.tasks__container::-webkit-scrollbar {
+  display: none;
 }

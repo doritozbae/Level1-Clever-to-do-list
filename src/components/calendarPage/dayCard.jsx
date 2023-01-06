@@ -1,57 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getMonth } from "../../utils/getMonth";
 import { getWeekDay } from "../../utils/getWeekDay";
-
-import moment from "moment";
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
+import { setDate, selectDate } from "../../store/dateReducer";
+import { selectUserData } from "../../store/userDataReducer";
+import { useDispatch, useSelector } from "react-redux";
 import "../../styles/dayCard.css";
 
-function Day() {
-  const [SelectedDay, setSelectedDay] = useState(false);
+function Day({ dayItem }) {
+  const currentDate = dayItem.format("DD-MM-YYYY");
+  const day = dayItem.format("D");
+  const month = getMonth(dayItem.format("MM") - 1);
+  const weekday = getWeekDay(dayItem.weekday());
 
-  const handleSelectedDay = () => {
-    if (SelectedDay === false) {
-      setSelectedDay(true);
-    } else setSelectedDay(false);
+  const dispatch = useDispatch();
+  const { data } = useSelector(selectUserData);
+  const { date } = useSelector(selectDate);
+
+  const [isActive, setIsActive] = useState(false);
+  const [haveTask, setHaveTask] = useState(false);
+  const [haveDoneTask, setHaveDoneTask] = useState(false);
+
+  useEffect(() => {
+    if (date === currentDate) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [date]);
+
+  const handleClickSlide = () => {
+    dispatch(setDate({ date: currentDate }));
+    // console.log(currentDate, date);
   };
 
-  const toggleSelectedDay = SelectedDay ? "dayCard selectedDay" : "dayCard";
-
-  const currentDay = moment();
-  const day = currentDay.clone().subtract(1, "day");
-  const daysArray = [...Array(365)].map(() => day.add(1, "day").clone());
-
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 7,
-    slidesToScroll: 7,
-  };
+  useEffect(() => {
+    if (data && Object.prototype.hasOwnProperty.call(data, currentDate)) {
+      setHaveTask(true);
+      const haveDoneTask = Object.values(data[currentDate]).every(
+        (task) => !task.isDone
+      );
+      setHaveDoneTask(!haveDoneTask);
+    } else {
+      setHaveTask(false);
+    }
+  }, [currentDate, data]);
 
   return (
     <>
-      <Slider {...settings}>
-        {daysArray.map((dayItem) => (
-          <div
-            className={toggleSelectedDay}
-            key={dayItem.format("DDMMYYYY")}
-            onClick={handleSelectedDay}
-          >
-            <h2>{getMonth(dayItem.format("MM") - 1)}</h2>
-            <h1>{dayItem.format("D")}</h1>
-            <h3>{getWeekDay(dayItem.weekday())}</h3>
-            <div className="dayTask__container">
-              <div className="dayTask"></div>
-              <div className="dayTask doneTask"></div>
-            </div>
-          </div>
-        ))}
-      </Slider>
+      <div
+        onClick={() => {
+          handleClickSlide(dayItem.format("DD-MM-YYYY"));
+        }}
+        className={isActive ? "dayCard active" : "dayCard"}
+        key={dayItem.format("DDMMYYYY")}
+      >
+        <h2>{month}</h2>
+        <h1>{day}</h1>
+        <h3>{weekday}</h3>
+        <div className="dayTask__container">
+          <div className={haveTask ? "dayTask" : ""}></div>
+          <div className={haveDoneTask ? "dayTask doneTask" : ""}></div>
+        </div>
+      </div>
     </>
   );
 }

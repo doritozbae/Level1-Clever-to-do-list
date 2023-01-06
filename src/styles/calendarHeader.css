@@ -1,5 +1,7 @@
 .calendarHeader {
-  background: #cadefc;
+  /* background: #cadefc; */
+  background: white;
+  box-shadow: 0px 5px 5px -5px rgba(135, 142, 148, 0.6);
   height: 100px;
   padding: 0px 250px;
   display: flex;
@@ -9,24 +11,42 @@
   justify-content: space-between;
 }
 
-.calendarHeaderName {
+.calendarHeaderName,
+.calendarGreeting {
   display: flex;
   flex-flow: row;
   align-items: center;
-}
-
-.calendarHeaderName svg {
+  font-size: 30px;
   color: #77acfc;
-  font-weight: bold;
-  margin-right: 3px;
 }
 
 .calendarHeaderOptions {
-  display: flex;
-  flex-flow: row;
   align-items: center;
-  color: #77acfc;
-  font-size: 20px;
+  /* color: #77acfc; */
+  font-size: 30px;
+  background-image: linear-gradient(
+    -225deg,
+    #8666fc 0%,
+    #b26efc 29%,
+    #ed73fd 67%,
+    #77acfc 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .logOut__font {

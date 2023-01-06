@@ -1,32 +1,30 @@
-import React, { useState } from "react";
-import Button from "@mui/material/Button";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import "../../styles/taskButton.css";
+import React from "react";
+import { useDispatch } from "react-redux";
 import AddTaskPopup from "./Popups/addTask";
+import { setTaskData } from "../../store/addTaskReducer";
+import "../../styles/taskButton.css";
 
-function AddTask() {
-  const [OpenPopup, setOpenPopup] = useState(false);
+function AddTask({ OpenPopup, setOpenPopup }) {
+  const dispatch = useDispatch();
 
-  const handlePopup = () => {
+  const togglePopup = () => {
     setOpenPopup(true);
+    const taskFilled = {
+      task: "",
+      description: "",
+      popupStyle: true,
+      taskId: null,
+      userId: null,
+      date: null,
+    };
+    dispatch(setTaskData({ taskFilled }));
   };
-
-  const theme = createTheme({
-    palette: {
-      neutral: {
-        main: "#a7caff;",
-        contrastText: "#000",
-      },
-    },
-  });
 
   return (
     <div className="btn__contaner">
-      <ThemeProvider theme={theme}>
-        <Button color="neutral" variant="contained" onClick={handlePopup}>
-          Add new task
-        </Button>
-      </ThemeProvider>
+      <button className="main_button" onClick={togglePopup}>
+        Add new task
+      </button>
 
       <AddTaskPopup OpenPopup={OpenPopup} setOpenPopup={setOpenPopup} />
     </div>

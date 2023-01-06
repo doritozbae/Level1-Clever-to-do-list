@@ -2,7 +2,39 @@
 
 body {
   margin: 0;
-  /* background-color: #f2f2f2; */
-  background-color: #f5f7fc;
+  background: rgb(244, 244, 247);
   font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.main_button,
+.main_button__cancel {
+  font-family: "Poppins", sans-serif;
+  margin: 10px 0 20px 10px;
+  display: block;
+  padding: 15px 30px;
+  border: 1px solid #a7caff;
+  border-radius: 10px;
+  background-color: #a7caff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.main_button:hover {
+  border: 1px solid #a7caff;
+  background-color: transparent;
+  color: #a7caff;
+}
+
+.main_button__cancel {
+  background-color: rgb(228, 227, 227);
+  border: 1px solid rgb(228, 227, 227);
+}
+
+.main_button__cancel:hover {
+  border: 1px solid rgb(209, 209, 209);
+  background-color: #fff;
+  color: rgb(209, 209, 209);
 }
