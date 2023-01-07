@@ -1,5 +1,5 @@
 import React from "react";
-import Day from "./DayCard";
+import Day from "./dayCard";
 import moment from "moment";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";

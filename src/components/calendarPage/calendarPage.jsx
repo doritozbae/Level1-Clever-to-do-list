@@ -1,6 +1,6 @@
 import React from "react";
-import CalendarHeader from "./CalendarHeader";
-import Calendar from "./Calendar";
+import CalendarHeader from "./calendarHeader";
+import Calendar from "./calendar";
 import "../../styles/calendarContent.css";
 import TaskContainer from "./TaskContainer";
 
