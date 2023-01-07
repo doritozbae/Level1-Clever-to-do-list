@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/Level1-Clever-to-do-list/static/css/main.74780698.css",
-    "main.js": "/Level1-Clever-to-do-list/static/js/main.54e3f23a.js",
+    "main.js": "/Level1-Clever-to-do-list/static/js/main.ff072ea2.js",
     "static/media/slick.svg": "/Level1-Clever-to-do-list/static/media/slick.2630a3e3eab21c607e21.svg",
     "static/media/slick.eot": "/Level1-Clever-to-do-list/static/media/slick.a4e97f5a2a64f0ab1323.eot",
     "static/media/slick.ttf": "/Level1-Clever-to-do-list/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Level1-Clever-to-do-list/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Level1-Clever-to-do-list/index.html",
     "main.74780698.css.map": "/Level1-Clever-to-do-list/static/css/main.74780698.css.map",
-    "main.54e3f23a.js.map": "/Level1-Clever-to-do-list/static/js/main.54e3f23a.js.map"
+    "main.ff072ea2.js.map": "/Level1-Clever-to-do-list/static/js/main.ff072ea2.js.map"
   },
   "entrypoints": [
     "static/css/main.74780698.css",
-    "static/js/main.54e3f23a.js"
+    "static/js/main.ff072ea2.js"
   ]
 }
