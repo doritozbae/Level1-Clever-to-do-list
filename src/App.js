@@ -3,15 +3,17 @@ import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ref, onValue } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
-
+import { BrowserRouter } from "react-router-dom";
 import PrivateRoutes from "./routes/privateRoutes";
 import Login from "./components/AuthPage/Login";
 import Register from "./components/AuthPage/Register";
-import CalendarPage from "./components/calendarPage/CalendarPage";
+import CalendarPage from "./components/calendarPage/calendarPage";
 import { AuthContextProvider, useAuth } from "./context/AuthContext";
 import { setUserData } from "./store/userDataReducer";
 import { setUser } from "./store/userReducer";
 import { auth, db } from "./database/firebase";
+import ErrorFallback from "./components/ErrorPage/Error";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -42,20 +44,26 @@ function App() {
   }, []);
 
   return (
-    <AuthContextProvider>
-      <Routes>
-        <Route
-          path="calendar"
-          element={
-            <PrivateRoutes>
-              <CalendarPage />
-            </PrivateRoutes>
-          }
-        />
-        <Route path="/" element={<Login />} />
-        <Route path="register" element={<Register />} />
-      </Routes>
-    </AuthContextProvider>
+
+      <BrowserRouter basename="/">
+        <AuthContextProvider>
+          <Routes>
+            <Route
+              path="calendar"
+              element={
+                <PrivateRoutes>
+                  <CalendarPage />
+                </PrivateRoutes>
+              }
+            />
+
+            <Route path="/" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="err" element={<ErrorFallback />} />
+          </Routes>
+        </AuthContextProvider>
+      </BrowserRouter>
+
   );
 }
 

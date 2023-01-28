@@ -42,7 +42,7 @@ function Register() {
 
       <div className="text-right">
         &nbsp;&nbsp;&nbsp;
-        <Link to="/login">Login</Link>
+        <Link to="/">Login</Link>
       </div>
       <button className="loginSectionButton" onClick={handleSubmit}>
         Sign up
