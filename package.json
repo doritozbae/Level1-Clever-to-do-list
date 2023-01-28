@@ -1,8 +1,7 @@
 {
-  "homepage": "https://doritozbae.github.io/Level1-Clever-to-do-list",
   "name": "clever-to-do",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -25,6 +24,7 @@
     "react": "^18.2.0",
     "react-dayjs": "^0.3.2",
     "react-dom": "^18.2.0",
+    "react-error-boundary": "^3.1.4",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
@@ -40,7 +40,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepare": "husky install"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
